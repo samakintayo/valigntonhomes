@@ -19,6 +19,18 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll on mobile when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   const handleLinkClick = (e, href) => {
     e.preventDefault();
     setIsOpen(false);
@@ -226,10 +238,10 @@ export default function Navbar() {
       )}
 
       {/* Mobile Drawer (Fully responsive with Accordions) */}
-      <div className={`fixed inset-y-0 right-0 w-72 bg-neutral-950/95 border-l border-white/10 z-40 transform transition-transform duration-300 ease-in-out backdrop-blur-lg lg:hidden ${
+      <div className={`fixed top-0 right-0 bottom-0 h-[100dvh] w-72 bg-neutral-950/95 border-l border-white/10 z-40 transform transition-transform duration-300 ease-in-out backdrop-blur-lg lg:hidden ${
         isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
-        <div className="flex flex-col h-full pt-24 pb-8 px-6 space-y-4 overflow-y-auto no-scrollbar">
+        <div className="flex flex-col h-full pt-24 pb-20 px-6 space-y-4 overflow-y-auto no-scrollbar">
           
           {/* Mobile Investments Accordion */}
           <div className="border-b border-white/5 py-2">
