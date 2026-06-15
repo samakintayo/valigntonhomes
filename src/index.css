@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Playfair Display", Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   
   --color-gold-light: #F3E5AB;
   --color-gold: #D4AF37;
@@ -30,13 +30,22 @@ body {
   padding: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   background-color: #050505;
   color: #f5f5f5;
 }
 
+@utility font-serif {
+  font-family: var(--font-serif);
+  font-feature-settings: "lnum", "ss01";
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: var(--font-serif);
+  font-feature-settings: "lnum", "ss01";
 }
 
 /* Custom premium design classes */
