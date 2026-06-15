@@ -203,19 +203,27 @@ export default function Navbar() {
             href="https://wa.me/2347037092049?text=Hello%20Valington%20Homes" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="p-2 text-neutral-400 hover:text-gold transition-colors"
+            className="p-2.5 rounded-lg border border-white/10 bg-neutral-900/60 backdrop-blur-md text-gold hover:text-gold-light transition-colors"
           >
-            <Phone className="w-5 h-5 text-gold" />
+            <Phone className="w-4 h-4 text-gold" />
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 text-neutral-300 hover:text-gold focus:outline-none"
+            className="p-2.5 rounded-lg border border-white/10 bg-neutral-900/80 backdrop-blur-md text-gold hover:text-gold-light focus:outline-none transition-all shadow-md active:scale-95 cursor-pointer relative z-50 animate-pulse-slow"
             aria-label="Toggle Menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Overlay Background */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 lg:hidden"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
 
       {/* Mobile Drawer (Fully responsive with Accordions) */}
       <div className={`fixed inset-y-0 right-0 w-72 bg-neutral-950/95 border-l border-white/10 z-40 transform transition-transform duration-300 ease-in-out backdrop-blur-lg lg:hidden ${
